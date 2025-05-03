@@ -1,6 +1,9 @@
-import Link from "next/link.js";
-import { NavLink } from "../../types/navbar-types.js";
+import Link from "next/link";
+import { NavLink } from "../../types/navbar-types";
 import { Heart, ShoppingCart } from "lucide-react";
+import SmNav from "./SmNav";
+
+// Define navLinks with iconName instead of icon for serializability
 const navLinks: NavLink[] = [
   {
     href: "/products",
@@ -10,36 +13,43 @@ const navLinks: NavLink[] = [
     href: "/brands",
     name: "Brands",
   },
-
   {
     href: "/cart",
-    name: "",
-    icon: ShoppingCart,
+    name: "cart",
+    iconName: "ShoppingCart",
   },
   {
     href: "/wishlist",
-    name: "",
-    icon: Heart,
+    name: "wishlist",
+    iconName: "Heart",
   },
 ];
 
 function Navbar() {
   return (
-    <nav className="flex items-center justify-between px-10 h-20 shadow-xl">
-      <h1 className="w-fit text-3xl tracking-[-2px] font-black">
-        <Link href="/">SHOP.CO</Link>
-      </h1>
+    <nav className="flex bg-primary items-center justify-between px-10 h-16 shadow-xl">
+      <div className="flex items-center justify-between w-full font-bold gap-3">
+        <h1 className="w-fit text-3xl tracking-[-2px] font-black">
+          <Link href="/">SHOP.CO</Link>
+        </h1>
 
-      <ul className="flex gap-6">
-        {navLinks.map(({ href, name, icon: Icon }, id: number) => (
-          <li key={id}>
-            <Link
-              href={href}
-              className="flex items-center gap-2 hover:underline"
-            >
+        <SmNav navLinks={navLinks} />
+      </div>
+
+      <ul className="flex gap-3 items-center md:gap-6">
+        {navLinks.map(({ href, name, iconName }, index) => (
+          <li
+            className={`${
+              name ? "hidden lg:block" : "block"
+            } transition-base hover:bg-darkPrimary hover:text-primary p-1 rounded-lg`}
+            key={index}
+          >
+            <Link href={href} className="flex items-center  gap-2">
               <span>{name}</span>
-
-              {Icon && <Icon className="w-5 h-5" />}
+              {iconName === "ShoppingCart" && (
+                <ShoppingCart className="w-5 h-5" />
+              )}
+              {iconName === "Heart" && <Heart className="w-5 h-5" />}
             </Link>
           </li>
         ))}
