@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-// import { Geist, Geist_Mono } from "next/font/google";
+import { Anton } from "next/font/google";
 import "./globals.css";
 
 import { Providers } from "./providers";
 import TopSectionSale from "../components/TopSectionSale/TopSectionSale";
 import Navbar from "../components/Navbar/Navbar";
+
 const satoshi = localFont({
   src: [
     {
@@ -38,15 +39,39 @@ const satoshi = localFont({
   display: "swap",
 });
 
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
+// const inter = localFont({
+//   src: [
+//     {
+//       path: "../../public/fonts/Inter-Light.ttf",
+//       weight: "300",
+//       style: "normal",
+//     },
+//     {
+//       path: "../../public/fonts/Inter-Regular.ttf",
+//       weight: "400",
+//       style: "normal",
+//     },
+//     {
+//       path: "../../public/fonts/Inter-Medium.ttf",
+//       weight: "500",
+//       style: "normal",
+//     },
+//     {
+//       path: "../../public/fonts/Inter-Bold.ttf",
+//       weight: "700",
+//       style: "normal",
+//     },
+//   ],
+//   variable: "--font-inter",
+//   display: "swap",
 // });
 
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
+const anton = Anton({
+  weight: ["400"],
+  subsets: ["latin"],
+  variable: "--font-anton",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Shopco",
@@ -60,7 +85,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={satoshi.className}>
+      <body className={`${satoshi.variable}  ${anton.variable}`}>
         <Providers
           attribute="class"
           defaultTheme="light"
@@ -70,7 +95,7 @@ export default function RootLayout({
         >
           <TopSectionSale />
           <Navbar />
-          <main className="px-10">{children}</main>
+          <main className="satoshi">{children}</main>
         </Providers>
       </body>
     </html>
