@@ -27,7 +27,7 @@ const navLinks: NavLink[] = [
 
 function Navbar() {
   return (
-    <nav className="flex bg-primary items-center justify-between px-10 h-16 shadow-2xl border-b">
+    <nav className="flex bg-primary items-center justify-between px-10 h-16 shadow-2xl border-b ">
       <div className="flex items-center justify-between w-full font-bold gap-3">
         <h1 className="w-fit text-3xl tracking-[2px] font-black anton">
           <Link href="/">SHOP.CO</Link>

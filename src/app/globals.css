@@ -2,6 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
+.satoshi {
+  font-family: var(--font-satoshi);
+}
+
+.anton {
+  font-family: var(--font-anton);
+}
+
+.opacity-black {
+  color: #0000009c;
+}
+
+.bg-smNav {
+  background-color: #0000009d;
+}
+
+.transition-base {
+  @apply transition-all duration-300 ease-linear;
+}
+
+/* sLIDER Move */
+.slider-move {
+  animation: sliderMove 10s linear backwards alternate infinite;
+}
+
+.small-shadow {
+  box-shadow: 0 0 10px #dddddd;
+}
+
+@keyframes sliderMove {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-150px);
+  }
+}
+/* Slider move */
 html {
   font-size: 14px; /* 1rem = 14px */
 }
@@ -39,60 +77,4 @@ html {
   html {
     font-size: 19px;
   }
-}
-
-.satoshi {
-  font-family: var(--font-satoshi);
-}
-
-.anton {
-  font-family: var(--font-anton);
-}
-
-.opacity-black {
-  color: #0000009c;
-}
-
-/* :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-
-
-
-
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --background: #ededed;
-    --foreground: #0a0a0a;
-  }
-}
-
-body {
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-} */
-
-.bg-smNav {
-  background-color: #0000009d;
-}
-
-.transition-base {
-  @apply transition-all duration-300 ease-linear;
 }

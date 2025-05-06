@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { HeroSliderTypes } from "../../types/hero-types.js";
+import { HeroSliderTypes } from "../../types/hero-types";
 
 const heroStats: HeroSliderTypes[] = [
   {
@@ -16,10 +16,11 @@ const heroStats: HeroSliderTypes[] = [
   },
 ];
 
-function Hero() {
+async function Hero() {
   return (
     <div className="flex flex-col-reverse sm:flex-row h-full">
       {/* Image Section */}
+
       <div
         className="h-[300px] sm:h-screen w-full sm:w-1/2 bg-cover bg-center"
         style={{
@@ -28,19 +29,19 @@ function Hero() {
       />
 
       {/* Text Section */}
-      <div className="flex flex-col gap-8 py-10 px-6 sm:px-10 w-full sm:w-1/2 justify-center">
+      <div className="flex flex-col items-center text-center sm:items-start sm:text-start gap-8 py-10 px-6 sm:px-10 w-full sm:w-1/2 justify-center">
         <h2 className="text-4xl sm:text-6xl tracking-[5px] anton">
           FIND CLOTHES <br /> THAT MATCHES <br /> YOUR STYLE
         </h2>
 
-        <p className="text-grey-black">
+        <p className="text-grey-black w-3/4">
           Browse through our diverse range of meticulously crafted garments,
           designed to bring out your individuality and cater to your sense of
           style.
         </p>
 
         <Link
-          className="bg-darkPrimary hover:bg-grey-black transition-base text-primary w-fit p-2 px-16 rounded-full"
+          className="bg-black text-white hover:bg-grey-black transition-base text-primary w-fit p-2 px-16 rounded-full"
           href="/"
         >
           Shop Now
