@@ -1,6 +1,5 @@
 import Image from "next/image.js";
 import { Product } from "../types/product-types";
-import { Star } from "lucide-react";
 
 function ProductCard({ title, imageCover, ratingsAverage, price }: Product) {
   return (
@@ -18,7 +17,7 @@ function ProductCard({ title, imageCover, ratingsAverage, price }: Product) {
           style={{
             objectFit: "contain",
           }}
-          src={imageCover}
+          src={imageCover!}
           fill
           alt={"xxx"}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -47,26 +46,3 @@ function ProductCard({ title, imageCover, ratingsAverage, price }: Product) {
   );
 }
 export default ProductCard;
-{
-  /* {product.data.map((e) => (
-        <div
-          style={{ position: "relative", width: "100%", height: "300px" }}
-          key={e._id}
-          className="col-span-1 border w-full"
-        >
-          <div style={{ position: "relative", width: "100%", height: "300px" }}>
-            <Image
-
-              src={e.imageCover}
-              fill
-              alt="alt"
-              className="border-2"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-          </div>
-
-          <h3>{e.title}</h3>
-          <p className="font-black text">${e.price}</p>
-        </div>
-      ))} */
-}

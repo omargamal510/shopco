@@ -93,7 +93,7 @@ export default function RootLayout({
           disableTransitionOnChange
           themes={["light", "dark", "system"]}
         >
-          <TopSectionSale />
+          {/* <TopSectionSale /> */}
           <Navbar />
           <main className="satoshi">{children}</main>
         </Providers>
