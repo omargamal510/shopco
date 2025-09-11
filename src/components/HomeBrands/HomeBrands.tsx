@@ -49,8 +49,3 @@ async function HomeBrands() {
 }
 
 export default HomeBrands;
-
-/*
-          {}
-
-*/

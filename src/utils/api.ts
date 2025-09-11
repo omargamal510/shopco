@@ -2,7 +2,8 @@ import { BrandResponse } from "../types/brands-types";
 import { ProductResponse } from "../types/product-types.js";
 
 // ENV_Variable_API_KEY
-export const API_KEY: string | undefined = process.env.API_KEY;
+export const API_BASE_URL: string | undefined =
+  process.env.NEXT_PUBLIC_API_BASE_URL;
 
 // ==========
 
@@ -13,8 +14,13 @@ export async function getBrands(
 ): Promise<BrandResponse | undefined> {
   try {
     const response: Response = await fetch(
-      `${API_KEY}api/v1/brands?limit=${limit}`
+      `${API_BASE_URL}api/v1/brands?limit=${limit}`
     );
+
+    if (!response.ok) {
+      throw new Error("Something went wrong");
+    }
+
     const brands: BrandResponse = await response.json();
 
     return brands;
@@ -31,7 +37,7 @@ export async function getProducts(
 ): Promise<ProductResponse | undefined> {
   try {
     const response: Response = await fetch(
-      `${API_KEY}api/v1/products?limit=${limit}&page=${page}`
+      `${API_BASE_URL}api/v1/products?limit=${limit}&page=${page}`
     );
     const products = await response.json();
 

@@ -34,7 +34,7 @@ async function Hero() {
           FIND CLOTHES <br /> THAT MATCHES <br /> YOUR STYLE
         </h2>
 
-        <p className="text-grey-black w-3/4">
+        <p className="text-grey-black dark:text-white  w-3/4">
           Browse through our diverse range of meticulously crafted garments,
           designed to bring out your individuality and cater to your sense of
           style.

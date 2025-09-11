@@ -85,7 +85,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${satoshi.variable}  ${anton.variable}`}>
+      <body className={` ${satoshi.variable}  ${anton.variable}`}>
         <Providers
           attribute="class"
           defaultTheme="light"

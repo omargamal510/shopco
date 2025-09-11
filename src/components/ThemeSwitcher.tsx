@@ -15,7 +15,7 @@ export function ThemeSwitcher() {
 
   return (
     <div>
-      <h1> {theme === "dark" ? "Ok dark" : "Lightyyyy"}</h1>
+      <h1> {theme === "dark" || "systen" ? "Ok dark" : "Lightyyyy"}</h1>
       The current theme is: {theme}
       <button
         className="border cursor-pointer"
@@ -28,6 +28,12 @@ export function ThemeSwitcher() {
         onClick={() => setTheme("dark")}
       >
         Dark Mode
+      </button>
+      <button
+        className="border cursor-pointer"
+        onClick={() => setTheme("system")}
+      >
+        System .. Mode
       </button>
     </div>
   );
