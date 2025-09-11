@@ -10,6 +10,8 @@ module.exports = {
       colors: {
         "default-grey": "#F0F0F0",
         "grey-black": "#0000009c",
+        "grey-black-60": "#00000099",
+        "grey-black-10": "##0000001A",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

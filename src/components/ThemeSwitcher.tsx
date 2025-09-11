@@ -1,5 +1,6 @@
 "use client";
 
+import { Computer, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
@@ -15,26 +16,24 @@ export function ThemeSwitcher() {
 
   return (
     <div>
-      <h1> {theme === "dark" || "systen" ? "Ok dark" : "Lightyyyy"}</h1>
-      The current theme is: {theme}
-      <button
-        className="border cursor-pointer"
-        onClick={() => setTheme("light")}
-      >
-        Light Mode
-      </button>
-      <button
-        className="border cursor-pointer"
-        onClick={() => setTheme("dark")}
-      >
-        Dark Mode
-      </button>
-      <button
+      {theme === "light" && (
+        <button className=" cursor-pointer" onClick={() => setTheme("dark")}>
+          <Moon />
+        </button>
+      )}
+
+      {theme === "dark" && (
+        <button className=" cursor-pointer" onClick={() => setTheme("light")}>
+          <Sun />
+        </button>
+      )}
+
+      {/* <button
         className="border cursor-pointer"
         onClick={() => setTheme("system")}
       >
-        System .. Mode
-      </button>
+        <Computer />
+      </button> */}
     </div>
   );
 }

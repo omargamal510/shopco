@@ -6,6 +6,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 import TopSectionSale from "../components/TopSectionSale/TopSectionSale";
 import Navbar from "../components/Navbar/Navbar";
+import Footer from "@/components/Footer/Footer";
 
 const satoshi = localFont({
   src: [
@@ -96,6 +97,7 @@ export default function RootLayout({
           {/* <TopSectionSale /> */}
           <Navbar />
           <main className="satoshi">{children}</main>
+          <Footer />
         </Providers>
       </body>
     </html>

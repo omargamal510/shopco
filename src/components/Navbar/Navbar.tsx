@@ -2,6 +2,7 @@ import Link from "next/link";
 import { NavLink } from "../../types/navbar-types";
 import { Heart, ShoppingCart } from "lucide-react";
 import SmNav from "./SmNav";
+import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 
 // Define navLinks with iconName instead of icon for serializability
 const navLinks: NavLink[] = [
@@ -29,8 +30,9 @@ function Navbar() {
   return (
     <nav className="flex items-center justify-between px-10 h-16 shadow-2xl border-b ">
       <div className="flex items-center justify-between w-full font-bold gap-3">
-        <h1 className="w-fit text-3xl tracking-[2px] font-black anton">
+        <h1 className="w-fit text-3xl tracking-[2px] font-black anton flex gap-2">
           <Link href="/">SHOP.CO</Link>
+          <ThemeSwitcher />
         </h1>
 
         <SmNav navLinks={navLinks} />
