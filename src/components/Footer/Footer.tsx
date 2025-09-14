@@ -1,4 +1,3 @@
-import FooterCompanySection from "@/components/Footer/FooterCompanySection";
 import { FooterLinksData } from "@/components/Footer/FooterData";
 import FooterLinksComponent from "@/components/Footer/FooterLinksComponent";
 import FooterLogo from "@/components/Footer/FooterLogo";
@@ -27,6 +26,8 @@ const Footer = () => {
         </p>
         <PaymentSvgs />
       </div>
+
+      {/* <img src="https://res.cloudinary.com/ddicfmdu4/image/upload/v1757865627/hero_ijoarq.jpg" /> */}
     </footer>
   );
 };

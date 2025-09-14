@@ -1,12 +1,34 @@
+import { FooterLogoDataTypes } from "@/types/footer.types";
 import { Facebook, Github, Instagram, Twitter } from "lucide-react";
 import Link from "next/link";
-import { JSX } from "react";
 
-const footerLogoData: JSX.Element[] = [
-  <Twitter />,
-  <Facebook />,
-  <Instagram />,
-  <Github />,
+// const footerLogoData: JSX.Element[] = [
+//   <Twitter />,
+//   <Facebook />,
+//   <Instagram />,
+//   <Github />,
+// ];
+
+const footerLogoData: FooterLogoDataTypes[] = [
+  {
+    logo: <Twitter />,
+    id: 1,
+  },
+
+  {
+    logo: <Facebook />,
+    id: 2,
+  },
+
+  {
+    logo: <Instagram />,
+    id: 3,
+  },
+
+  {
+    logo: <Github />,
+    id: 4,
+  },
 ];
 
 const FooterLogo = () => {
@@ -21,10 +43,10 @@ const FooterLogo = () => {
       </p>
 
       <div className="flex gap-1.5 ">
-        {footerLogoData.map((logo, index) => (
+        {footerLogoData.map(({ logo, id }) => (
           <Link
             className="p-2 [&>*]:w-4 [&>*]:h-4  border border-[#00000033] bg-white rounded-full hover:bg-black hover:text-white transition-base"
-            key={index}
+            key={id}
             href="/"
           >
             {logo}

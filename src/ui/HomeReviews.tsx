@@ -83,7 +83,7 @@ export default function HomeReviews() {
     // Listen to resize events
 
     // Cleanup
-  }, []);
+  }, [vw]);
 
   return (
     <Carousel

@@ -1,8 +1,11 @@
 "use client";
 
 export default function TopSectionClose() {
-  const handleClose = (e) => {
-    const banner = e.target.closest("[data-sale-banner]");
+  const handleClose = (
+    e: React.MouseEvent<HTMLButtonElement | HTMLDivElement>
+  ) => {
+    const target = e.target as HTMLElement;
+    const banner = target.closest<HTMLElement>("[data-sale-banner]");
     if (banner) {
       banner.classList.add("hidden");
       banner.setAttribute("data-sale-banner", "closed");

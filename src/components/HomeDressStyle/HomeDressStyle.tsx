@@ -1,12 +1,12 @@
 const dressStyles = [
   {
     text: "casual",
-    url: "url('./home/casual.png')",
+    url: "url('./home/casual.avif')",
   },
 
   {
     text: "formal",
-    url: "url('./home/formal.png')",
+    url: "url('./home/formal.avif')",
   },
 
   {
@@ -16,7 +16,7 @@ const dressStyles = [
 
   {
     text: "gym",
-    url: "url('./home/gym.png')",
+    url: "url('./home/gym.avif')",
   },
 ];
 

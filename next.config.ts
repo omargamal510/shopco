@@ -9,6 +9,12 @@ const nextConfig: NextConfig = {
         hostname: "ecommerce.routemisr.com",
         pathname: "**",
       },
+
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        pathname: "**",
+      },
     ],
   },
 };

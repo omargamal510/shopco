@@ -24,7 +24,7 @@ async function Hero() {
       <div
         className="h-[300px] sm:h-screen w-full sm:w-1/2 bg-cover bg-center"
         style={{
-          backgroundImage: "url('./home/hero.jpg')",
+          backgroundImage: "url('./home/hero.avif')",
         }}
       />
 
