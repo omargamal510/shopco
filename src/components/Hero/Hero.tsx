@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { HeroSliderTypes } from "../../types/hero-types";
+import Image from "next/image";
 
 const heroStats: HeroSliderTypes[] = [
   {
@@ -18,15 +19,25 @@ const heroStats: HeroSliderTypes[] = [
 
 async function Hero() {
   return (
-    <div className="flex flex-col-reverse sm:flex-row h-full">
+    <div className="flex flex-col-reverse sm:flex-row h-screen">
       {/* Image Section */}
 
-      <div
+      {/* <div
         className="h-[300px] sm:h-screen w-full sm:w-1/2 bg-cover bg-center"
         style={{
           backgroundImage: "url('./home/hero.avif')",
         }}
-      />
+      /> */}
+
+      <div className="relative w-full sm:w-1/2 h-full">
+        <Image
+          alt="hero-image"
+          src="/home/hero.avif"
+          fill
+          priority
+          className="object-cover object-center h-full"
+        />
+      </div>
 
       {/* Text Section */}
       <div className="flex flex-col items-center text-center sm:items-start sm:text-start gap-8 py-10 px-6 sm:px-10 w-full sm:w-1/2 justify-center">
