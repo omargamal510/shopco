@@ -7,6 +7,11 @@ import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 // Define navLinks with iconName instead of icon for serializability
 const navLinks: NavLink[] = [
   {
+    href: "/login",
+    name: "Loginnnnn",
+  },
+
+  {
     href: "/products",
     name: "Products",
   },
@@ -14,6 +19,7 @@ const navLinks: NavLink[] = [
     href: "/brands",
     name: "Brands",
   },
+
   {
     href: "/cart",
     name: "cart",

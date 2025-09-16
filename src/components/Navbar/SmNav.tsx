@@ -14,11 +14,11 @@ function SmNav({ navLinks }: SmNavProps) {
 
       <div
         className={`${
-          navOpen ? "" : "-top-full"
-        } h-screen transition-base backdrop-blur-sm ease-linear flex items-center justify-center bg-smNav z-50 fixed text-primary inset-0 `}
+          navOpen ? "" : "top-[-150%]"
+        } h-screen transition-base !duration-500  ease-linear flex items-center justify-center bg-smNav z-50 fixed text-primary inset-0 `}
       >
         <button
-          className="absolute right-5 top-10 p-2 rounded-lg text-primary bg-darkPrimary"
+          className="absolute right-5 top-10 p-2 rounded-lg text-white bg-darkPrimary"
           onClick={() => setNavOpen(false)}
         >
           <X />
@@ -30,7 +30,9 @@ function SmNav({ navLinks }: SmNavProps) {
               className="text-2xl hover:bg-darkPrimary p-2 transition-base rounded-lg  font-medium"
               key={i}
             >
-              <Link href={href}>{name}</Link>
+              <Link className="text-white dark:text-black" href={href}>
+                {name}
+              </Link>
             </li>
           ))}
         </ul>

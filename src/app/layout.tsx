@@ -85,7 +85,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={` ${satoshi.variable}  ${anton.variable}`}>
+      <body
+        suppressHydrationWarning
+        className={` ${satoshi.variable}  ${anton.variable}`}
+      >
         <Providers
           attribute="class"
           defaultTheme="light"
@@ -94,9 +97,7 @@ export default function RootLayout({
           themes={["light", "dark", "system"]}
         >
           {/* <TopSectionSale /> */}
-          <Navbar />
-          <main className="satoshi">{children}</main>
-          <Footer />
+          {children}
         </Providers>
       </body>
     </html>
