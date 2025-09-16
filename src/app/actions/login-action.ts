@@ -4,7 +4,14 @@ import { API_BASE_URL } from "@/utils/api";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-export async function loginAction(prevState: any, formData: FormData) {
+export interface LoginState {
+  error?: string;
+  success?: boolean;
+  user?: string;
+  type?: string;
+}
+
+export async function loginAction(prevState: LoginState, formData: FormData) {
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
 
@@ -20,7 +27,6 @@ export async function loginAction(prevState: any, formData: FormData) {
 
   const data = await res.json();
 
-  // ✅ Store token securely in cookies
   (
     await // ✅ Store token securely in cookies
     cookies()
@@ -31,6 +37,9 @@ export async function loginAction(prevState: any, formData: FormData) {
     path: "/",
   });
 
-  // ✅ Redirect to dashboard
   redirect("/");
 }
+
+/*
+
+*/

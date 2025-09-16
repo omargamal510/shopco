@@ -1,15 +1,16 @@
 "use client";
 
-import { loginAction } from "@/app/actions/login-action";
+import { loginAction, LoginState } from "@/app/actions/login-action";
 import { useActionState } from "react";
 
 export default function LoginPage() {
   // initial state
 
-  const [state, formAction, isPending] = useActionState<any, FormData>(
-    loginAction as any,
-    { error: null, success: false, user: undefined, type: undefined }
+  const [state, formAction, isPending] = useActionState<LoginState, FormData>(
+    loginAction,
+    { error: undefined, success: false, user: undefined, type: undefined }
   );
+
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <h2 className="text-2xl font-bold mb-6">Login</h2>

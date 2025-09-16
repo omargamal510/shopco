@@ -4,8 +4,6 @@ import { Anton } from "next/font/google";
 import "./globals.css";
 
 import { Providers } from "./providers";
-import Navbar from "../components/Navbar/Navbar";
-import Footer from "@/components/Footer/Footer";
 
 const satoshi = localFont({
   src: [

@@ -1,10 +1,3 @@
-// import Hero from "../components/Hero/Hero";
-// import HomeBrands from "../components/HomeBrands/HomeBrands";
-// import HomeDressStyle from "../components/HomeDressStyle/HomeDressStyle";
-// import HomeNewArrivals from "../components/HomeNewArrivals/HomeNewArrivals";
-// import HomeTopSelling from "../components/HomeTopSelling/HomeTopSelling";
-// import HomeReviews from "../ui/HomeReviews";
-
 import Hero from "@/components/Hero/Hero";
 import HomeBrands from "@/components/HomeBrands/HomeBrands";
 import HomeDressStyle from "@/components/HomeDressStyle/HomeDressStyle";
