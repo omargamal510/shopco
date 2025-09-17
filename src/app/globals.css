@@ -22,6 +22,18 @@
   @apply transition-all duration-300 ease-linear;
 }
 
+/* Spinner animation */
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* Spinner animation */
+
 /* sLIDER Move */
 .slider-move {
   animation: sliderMove 10s linear backwards alternate infinite;

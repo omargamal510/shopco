@@ -1,15 +1,9 @@
 "use server";
 
+import { LoginState } from "@/types/auth-types";
 import { API_BASE_URL } from "@/utils/api";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-
-export interface LoginState {
-  error?: string;
-  success?: boolean;
-  user?: string;
-  type?: string;
-}
 
 export async function loginAction(prevState: LoginState, formData: FormData) {
   const email = formData.get("email") as string;

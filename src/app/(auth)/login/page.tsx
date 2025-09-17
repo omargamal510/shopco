@@ -1,6 +1,8 @@
 "use client";
 
-import { loginAction, LoginState } from "@/app/actions/login-action";
+import { loginAction } from "@/app/actions/auth/login-action";
+import { LoginState } from "@/types/auth-types";
+import Spinner from "@/ui/Spinner";
 import { useActionState } from "react";
 
 export default function LoginPage() {
@@ -36,7 +38,7 @@ export default function LoginPage() {
           disabled={isPending}
           className="bg-black text-white py-2 rounded hover:bg-gray-800 disabled:opacity-50"
         >
-          {isPending ? "Logging in..." : "Login"}
+          {isPending ? <Spinner /> : "Login"}
         </button>
       </form>
 
