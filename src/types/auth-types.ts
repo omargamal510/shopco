@@ -16,3 +16,10 @@ export type RegisterState = {
   error?: string;
   success?: boolean;
 };
+export interface ErrorsInterface {
+  name: string | null;
+  email: string | null;
+  password: string | null;
+  rePassword: string | null;
+  phone: string | null;
+}

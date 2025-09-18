@@ -2,7 +2,10 @@
 
 import { registerInputData } from "@/app/(auth)/register/register-data";
 import registerAction from "@/app/actions/auth/register-action";
+import { ErrorsInterface } from "@/types/auth-types";
+import InputError from "@/ui/InputError";
 import Spinner from "@/ui/Spinner";
+import { isValidEmail, isValidPassword } from "@/utils/auth-utils";
 import { BadgeX } from "lucide-react";
 import { useActionState, useRef, useState } from "react";
 
@@ -11,14 +14,6 @@ const Register = () => {
     error: undefined,
     success: undefined,
   });
-
-  interface ErrorsInterface {
-    name: string | null;
-    email: string | null;
-    password: string | null;
-    rePassword: string | null;
-    phone: string | null;
-  }
 
   const [errors, setErrors] = useState<ErrorsInterface>({
     name: null,
@@ -31,18 +26,27 @@ const Register = () => {
   const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
 
   const handleErrorChange = () => {
+    setErrors(null);
     const newErrors: ErrorsInterface = {
       name:
-        (inputsRef.current[0]?.value ?? "").length < 3
+        (inputsRef.current[0]?.value ?? "").length === 0
+          ? null // don’t show error if empty
+          : (inputsRef.current[0]?.value ?? "").length < 3
           ? "Name must be more than 2 characters"
           : null,
+
       email:
-        (inputsRef.current[1]?.value ?? "").length < 3
-          ? "Email must be more than 2 characters"
-          : null,
-      password: errors.password, // keep existing
-      rePassword: errors.rePassword, // keep existing
-      phone: errors.phone, // keep existing
+        (inputsRef.current[1]?.value ?? "").length === 0
+          ? null
+          : isValidEmail(inputsRef.current[1]?.value ?? ""),
+
+      password:
+        (inputsRef.current[2]?.value ?? "").length === 0
+          ? null
+          : isValidPassword(inputsRef.current[2]?.value ?? ""),
+
+      rePassword: errors.rePassword,
+      phone: errors.phone,
     };
 
     setErrors(newErrors);
@@ -71,7 +75,9 @@ const Register = () => {
               required
             />
 
-            <p>{errors && errors[name as keyof ErrorsInterface]} </p>
+            {errors && (
+              <InputError error={errors[name as keyof ErrorsInterface]} />
+            )}
           </div>
         ))}
 
