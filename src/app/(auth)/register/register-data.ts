@@ -25,8 +25,8 @@ export const registerInputData: registerInputDataTypes[] = [
   {
     type: "password",
     name: "rePassword",
-    placeholder: "re-enter your password",
-    label: "re-password",
+    placeholder: "Confirm your password",
+    label: "Confirm Password",
   },
 
   {

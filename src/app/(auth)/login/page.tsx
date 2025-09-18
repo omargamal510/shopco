@@ -36,7 +36,7 @@ export default function LoginPage() {
         <button
           type="submit"
           disabled={isPending}
-          className="bg-black text-white py-2 rounded hover:bg-gray-800 disabled:opacity-50"
+          className="bg-black flex items-center justify-center text-white py-2 rounded hover:bg-gray-800 disabled:opacity-50"
         >
           {isPending ? <Spinner /> : "Login"}
         </button>
