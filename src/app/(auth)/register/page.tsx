@@ -26,7 +26,6 @@ const Register = () => {
   const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
 
   const handleErrorChange = () => {
-    setErrors(null);
     const newErrors: ErrorsInterface = {
       name:
         (inputsRef.current[0]?.value ?? "").length === 0
