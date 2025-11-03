@@ -1,8 +1,8 @@
 "use client";
 
 import { registerInputData } from "@/app/(auth)/register/register-data";
-import registerAction from "@/app/actions/auth/register-action";
-import { ErrorsInterface } from "@/types/auth-types";
+import registerAction from "@/app/(auth)/auth-actions/register-action";
+import { InputsInterface } from "@/types/auth-types";
 import InputError from "@/ui/InputError";
 import Spinner from "@/ui/Spinner";
 import { isValidEmail, isValidPassword } from "@/utils/auth-utils";
@@ -15,7 +15,7 @@ const Register = () => {
     success: undefined,
   });
 
-  const [errors, setErrors] = useState<ErrorsInterface>({
+  const [errors, setErrors] = useState<InputsInterface>({
     name: null,
     email: null,
     password: null,
@@ -26,7 +26,7 @@ const Register = () => {
   const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
 
   const handleErrorChange = () => {
-    const newErrors: ErrorsInterface = {
+    const newErrors: InputsInterface = {
       name:
         (inputsRef.current[0]?.value ?? "").length === 0
           ? null // don’t show error if empty
@@ -74,8 +74,8 @@ const Register = () => {
               required
             />
 
-            {errors && (
-              <InputError error={errors[name as keyof ErrorsInterface]} />
+            {errors[name as keyof InputsInterface] && (
+              <InputError error={errors[name as keyof InputsInterface]} />
             )}
           </div>
         ))}
@@ -91,10 +91,12 @@ const Register = () => {
 
       {/* Errors */}
 
-      {data.error && (
+      {data.error ? (
         <p className="text-red-500 mt-4 flex gap-1 items-center justify-center">
           <BadgeX /> {data.error}
         </p>
+      ) : (
+        ""
       )}
     </div>
   );

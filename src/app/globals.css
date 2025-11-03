@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+body,
+html,
+* {
+  transition: all 0.3s linear;
+}
+
 .satoshi {
   font-family: var(--font-satoshi);
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { loginAction } from "@/app/actions/auth/login-action";
+import { loginAction } from "@/app/(auth)/auth-actions/login-action";
 import { LoginState } from "@/types/auth-types";
 import Spinner from "@/ui/Spinner";
 import { useActionState } from "react";

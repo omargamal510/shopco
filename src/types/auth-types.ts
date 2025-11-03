@@ -16,7 +16,7 @@ export type RegisterState = {
   error?: string;
   success?: boolean;
 };
-export interface ErrorsInterface {
+export interface InputsInterface {
   name: string | null;
   email: string | null;
   password: string | null;
