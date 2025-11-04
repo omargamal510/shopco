@@ -1,3 +1,7 @@
+import { loginSchema } from "@/app/(auth)/login/login-schema";
+import { registerSchema } from "@/app/(auth)/register/register-schema";
+import z from "zod";
+
 export interface registerInputDataTypes {
   type: string;
   name: string;
@@ -23,3 +27,11 @@ export interface InputsInterface {
   rePassword: string | null;
   phone: string | null;
 }
+
+export type AuthTokenStore = {
+  token: string;
+  setToken: (newToken: string) => void;
+};
+
+export type LoginForm = z.infer<typeof loginSchema>;
+export type RegisterForm = z.infer<typeof registerSchema>;
