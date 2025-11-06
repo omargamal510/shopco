@@ -4,6 +4,7 @@ import { Heart, ShoppingCart } from "lucide-react";
 import SmNav from "./SmNav";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import { cookies } from "next/headers";
+import LogOut from "@/ui/LogOut";
 
 // Define navLinks with iconName instead of icon for serializability
 
@@ -74,6 +75,8 @@ async function Navbar() {
             </li>
           );
         })}
+
+        <LogOut />
       </ul>
     </nav>
   );

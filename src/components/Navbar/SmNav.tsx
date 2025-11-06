@@ -3,6 +3,7 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { SmNavProps } from "../../types/navbar-types.js";
 import Link from "next/link";
+import LogOut from "@/ui/LogOut";
 
 function SmNav({ navLinks }: SmNavProps) {
   const [navOpen, setNavOpen] = useState<boolean>(false);
@@ -35,6 +36,8 @@ function SmNav({ navLinks }: SmNavProps) {
               </Link>
             </li>
           ))}
+
+          <LogOut />
         </ul>
       </div>
     </div>

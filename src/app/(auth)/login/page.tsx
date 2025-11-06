@@ -77,14 +77,13 @@ const Login = () => {
   // 🧩 4. UI
   return (
     <div className="flex flex-col items-center justify-center h-screen px-4">
-      <h2 className="text-2xl font-bold mb-6">Register</h2>
+      <h2 className="text-2xl font-bold mb-6">Login</h2>
 
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col gap-5 w-full max-w-sm"
       >
         {/* Name */}
-
         {/* Email */}
         <div className="flex flex-col">
           <label htmlFor="email" className="mb-1 font-medium text-gray-700">
@@ -101,7 +100,6 @@ const Login = () => {
             <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
           )}
         </div>
-
         {/* Password */}
         <div className="flex flex-col">
           <label htmlFor="password" className="mb-1 font-medium text-gray-700">
@@ -120,7 +118,6 @@ const Login = () => {
             </p>
           )}
         </div>
-
         <Link className="underline text-sm" href={"/register"}>
           Create new account
         </Link>
