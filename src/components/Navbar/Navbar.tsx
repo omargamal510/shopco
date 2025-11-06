@@ -10,11 +10,6 @@ import LogOut from "@/ui/LogOut";
 
 const navLinks: NavLink[] = [
   {
-    href: "/register",
-    name: "Register",
-  },
-
-  {
     href: "/login",
     name: "Login",
   },
@@ -37,6 +32,11 @@ const navLinks: NavLink[] = [
     href: "/wishlist",
     name: "Wishlist",
     iconName: "Heart",
+  },
+
+  {
+    href: "/register",
+    name: "Register",
   },
 ];
 

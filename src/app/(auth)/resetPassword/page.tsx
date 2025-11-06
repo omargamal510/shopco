@@ -1,50 +1,47 @@
 "use client";
 
-import { loginSchema } from "@/app/(auth)/login/login-schema";
-import { LoginForm } from "@/types/auth-types";
+import { ResetPasswordForm } from "@/types/auth-types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
+import { resetPasswordSchema } from "@/app/(auth)/resetPassword/resetPassword-schema";
 import useAuthToken from "@/store/AuthStore";
-import Link from "next/link";
-
+import Cookies from "js-cookie";
 // 🧩 1. Define Zod schema
 
 // 🧠 Infer the TypeScript type from Zod
 
-const Login = () => {
+const ResetPassword = () => {
   const [generalError, setGeneralError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
   const setToken = useAuthToken((state) => state.setToken);
-
+  const router = useRouter();
   // 🧩 2. Connect Zod schema with React Hook Form
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginForm>({
-    resolver: zodResolver(loginSchema),
+  } = useForm<ResetPasswordForm>({
+    resolver: zodResolver(resetPasswordSchema),
     defaultValues: {
       email: "",
-      password: "",
+      newPassword: "",
     },
   });
 
   // 🧩 3. Handle form submit
-  const onSubmit: SubmitHandler<LoginForm> = async (data) => {
+  const onSubmit: SubmitHandler<ResetPasswordForm> = async (data) => {
     setGeneralError("");
     setSuccessMessage("");
     setLoading(true);
 
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}api/v1/auth/signin`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}api/v1/auth/resetPassword`,
         {
-          method: "POST",
+          method: "PUT",
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
@@ -59,12 +56,10 @@ const Login = () => {
         throw new Error(userData.message || "Signup failed");
       }
 
-      setSuccessMessage("Login successful! 🎉");
-      console.log("User registered:", userData);
-
-      // Optional redirect / token handling
       Cookies.set("authToken", userData.token, { expires: 30 });
       setToken(userData.token);
+
+      setSuccessMessage("Code sent check your email! 🎉");
       router.push("/");
     } catch (err: any) {
       setGeneralError(err.message || "Something went wrong, please try again.");
@@ -76,7 +71,7 @@ const Login = () => {
   // 🧩 4. UI
   return (
     <div className="flex flex-col items-center justify-center h-screen px-4">
-      <h2 className="text-2xl font-bold mb-6">Login</h2>
+      <h2 className="text-2xl font-bold mb-6">Forgot Password</h2>
 
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -102,29 +97,22 @@ const Login = () => {
         {/* Password */}
         <div className="flex flex-col">
           <label htmlFor="password" className="mb-1 font-medium text-gray-700">
-            Password
+            New password
           </label>
           <input
-            {...register("password")}
+            {...register("newPassword")}
             id="password"
             type="password"
             placeholder="Enter your password"
             className="border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          {errors.password && (
+          {errors.newPassword && (
             <p className="text-red-500 text-sm mt-1">
-              {errors.password.message}
+              {errors.newPassword.message}
             </p>
           )}
         </div>
-        <div className="flex md:flex-row gap-2 flex-col justify-between ">
-          <Link className="underline text-sm" href={"/register"}>
-            Create new account
-          </Link>
-          <Link className="underline text-sm" href={"/forgotPassword"}>
-            Forgot Password ?
-          </Link>
-        </div>
+
         {/* Submit Button */}
         <button
           type="submit"
@@ -156,7 +144,7 @@ const Login = () => {
               Loading...
             </span>
           ) : (
-            "Login"
+            "Submit"
           )}
         </button>
       </form>
@@ -172,4 +160,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ResetPassword;

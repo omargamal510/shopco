@@ -1,48 +1,41 @@
 "use client";
 
-import { loginSchema } from "@/app/(auth)/login/login-schema";
-import { LoginForm } from "@/types/auth-types";
+import { VerifyResetCodeForm } from "@/types/auth-types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import Cookies from "js-cookie";
-import { useRouter } from "next/navigation";
-import useAuthToken from "@/store/AuthStore";
-import Link from "next/link";
+import { verifyResetCodeSchema } from "@/app/(auth)/verifyResetCode/verifyResetCode-schema";
 
 // 🧩 1. Define Zod schema
 
 // 🧠 Infer the TypeScript type from Zod
 
-const Login = () => {
+const VerifyResetCode = () => {
   const [generalError, setGeneralError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
-  const setToken = useAuthToken((state) => state.setToken);
 
   // 🧩 2. Connect Zod schema with React Hook Form
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginForm>({
-    resolver: zodResolver(loginSchema),
+  } = useForm<VerifyResetCodeForm>({
+    resolver: zodResolver(verifyResetCodeSchema),
     defaultValues: {
-      email: "",
-      password: "",
+      resetCode: "",
     },
   });
 
   // 🧩 3. Handle form submit
-  const onSubmit: SubmitHandler<LoginForm> = async (data) => {
+  const onSubmit: SubmitHandler<VerifyResetCodeForm> = async (data) => {
     setGeneralError("");
     setSuccessMessage("");
     setLoading(true);
 
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}api/v1/auth/signin`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}api/v1/auth/verifyResetCode`,
         {
           method: "POST",
           headers: {
@@ -59,13 +52,8 @@ const Login = () => {
         throw new Error(userData.message || "Signup failed");
       }
 
-      setSuccessMessage("Login successful! 🎉");
+      setSuccessMessage("Successfull 🎉");
       console.log("User registered:", userData);
-
-      // Optional redirect / token handling
-      Cookies.set("authToken", userData.token, { expires: 30 });
-      setToken(userData.token);
-      router.push("/");
     } catch (err: any) {
       setGeneralError(err.message || "Something went wrong, please try again.");
     } finally {
@@ -76,7 +64,7 @@ const Login = () => {
   // 🧩 4. UI
   return (
     <div className="flex flex-col items-center justify-center h-screen px-4">
-      <h2 className="text-2xl font-bold mb-6">Login</h2>
+      <h2 className="text-2xl font-bold mb-6">Verify Reset Code</h2>
 
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -86,45 +74,26 @@ const Login = () => {
         {/* Email */}
         <div className="flex flex-col">
           <label htmlFor="email" className="mb-1 font-medium text-gray-700">
-            Email
+            Code
           </label>
           <input
-            {...register("email")}
-            id="email"
-            type="email"
-            placeholder="example@gmail.com"
+            {...register("resetCode")}
+            id="resetCode"
+            type="text"
+            placeholder="xxxxxx"
             className="border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          {errors.email && (
-            <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
-          )}
-        </div>
-        {/* Password */}
-        <div className="flex flex-col">
-          <label htmlFor="password" className="mb-1 font-medium text-gray-700">
-            Password
-          </label>
-          <input
-            {...register("password")}
-            id="password"
-            type="password"
-            placeholder="Enter your password"
-            className="border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          {errors.password && (
+          {errors.resetCode && (
             <p className="text-red-500 text-sm mt-1">
-              {errors.password.message}
+              {errors.resetCode.message}
             </p>
           )}
         </div>
-        <div className="flex md:flex-row gap-2 flex-col justify-between ">
-          <Link className="underline text-sm" href={"/register"}>
-            Create new account
-          </Link>
-          <Link className="underline text-sm" href={"/forgotPassword"}>
-            Forgot Password ?
-          </Link>
-        </div>
+
+        {/* <Link className="underline text-sm" href={"/register"}>
+          Create new account
+        </Link> */}
+
         {/* Submit Button */}
         <button
           type="submit"
@@ -156,7 +125,7 @@ const Login = () => {
               Loading...
             </span>
           ) : (
-            "Login"
+            "Confirm"
           )}
         </button>
       </form>
@@ -172,4 +141,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default VerifyResetCode;

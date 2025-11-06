@@ -19,6 +19,6 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!_next/static|_next/image|favicon.ico|register|api).*)", // ✅ كل الصفحات عدا ملفات النظام
+    "/((?!_next/static|_next/image|favicon.ico|register|forgotPassword|verifyResetCode|resetPassword|api).*)", // ✅ كل الصفحات عدا ملفات النظام
   ],
 };
