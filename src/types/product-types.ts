@@ -26,7 +26,7 @@ export interface Product {
   description?: string;
   quantity?: number;
   price?: number;
-  imageCover?: string;
+  imageCover?: string | undefined;
   category?: Category;
   brand?: Brand;
   ratingsAverage?: number;

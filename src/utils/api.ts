@@ -32,7 +32,7 @@ export async function getBrands(
 // Get Products
 
 export async function getProducts(
-  limit: number = 5,
+  limit: number = 9,
   page: number = 1
 ): Promise<ProductResponse | undefined> {
   try {

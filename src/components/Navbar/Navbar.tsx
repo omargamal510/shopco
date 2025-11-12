@@ -2,9 +2,9 @@ import Link from "next/link";
 import { NavLink } from "../../types/navbar-types";
 import { Heart, ShoppingCart } from "lucide-react";
 import SmNav from "./SmNav";
-import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import { cookies } from "next/headers";
 import LogOut from "@/ui/LogOut";
+import { ThemeSwitcher } from "@/components/ui/ThemeSwitcher";
 
 // Define navLinks with iconName instead of icon for serializability
 
